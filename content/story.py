@@ -1,1 +1,7 @@
-
+def opening_Scene():
+    print("=" * 50)
+    print("THE MUSEUM OF THINGS THAT NEVER HAPPENED")
+    print("=" * 50)
+    print("You slowly open your eyes. The room is dark and silent.")
+    print("The clock on the wall reads 2:17 AM.")
+    print("You have no memory of how you arrived here.")
