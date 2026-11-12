@@ -1,3 +1,4 @@
+# Add opening scene to story
 def opening_Scene():
     print("=" * 50)
     print("THE MUSEUM OF THINGS THAT NEVER HAPPENED")
