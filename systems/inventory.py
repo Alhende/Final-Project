@@ -1,4 +1,3 @@
-
 # Inventory system for The Museum of Things That Never Happened
 
 # List of items the player has collected
