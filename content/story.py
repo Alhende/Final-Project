@@ -218,16 +218,17 @@ def choose_ending():
     print("1. Escape the Museum")
     print("2. Become the New Curator")
     print("3. Destroy the Museum")
+    print("4. Return to exploring the museum")
 
     while True:
-        choice = input("Enter 1, 2, or 3: ")
+        choice = input("Enter 1, 2, 3, or 4: ")
 
         if choice == "1":
             if "Silver Key" in inventory:
                 print("\nENDING 1: ESCAPE THE MUSEUM")
                 print("You use the Silver Key to unlock the hidden exit.")
                 print("You escape the museum and leave your forgotten memories behind.")
-                break
+                return True
             else:
                 print("\nYou need the Silver Key to escape the museum.")
 
@@ -236,7 +237,7 @@ def choose_ending():
                 print("\nENDING 2: THE NEW CURATOR")
                 print("You discover the truth about the Curator.")
                 print("You take his place and become the guardian of the museum.")
-                break
+                return True
             else:
                 print("\nYou need the Sealed Letter and Missing City Map.")
 
@@ -245,12 +246,14 @@ def choose_ending():
                 print("\nENDING 3: THE MUSEUM DESTROYED")
                 print("You use the memories you collected to destroy the museum.")
                 print("As the museum collapses, you finally remember who you are.")
-                break
+                return True
             else:
                 print("\nYou need the Broken Clock Hand and Memory Photograph.")
-
+        elif choice == "4":
+            print("\nYou decide to continue exploring the museum.")
+            return False
         else:
-            print("Invalid choice. Please enter 1, 2, or 3.")
+            print("Invalid choice. Please enter 1, 2, 3, or 4.")
 # Run the story when this file is executed directly
 if __name__ == "__main__":
     while True:
@@ -266,8 +269,10 @@ if __name__ == "__main__":
                 add_item("Memory Photograph")
                 print("You received the Memory Photograph.")
                 story_flags["met_forgotten_visitor"] = True
-                choose_ending()
-                break
+                
 
             elif visitor_result == "memory_clue":
                 print("\nYou should continue exploring the museum.")
+        if story_flags["met_forgotten_visitor"]:
+            if choose_ending():
+                break
