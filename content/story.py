@@ -9,6 +9,8 @@ from content.npcs import curator_interaction
 from content.npcs import clockmaker_interaction
 from systems.challenges import missing_cities_puzzle, broken_clocks_puzzle
 from security.security import audit_log
+from systems.inventory import inventory
+from security.save_load import save_game, load_game
 # Opening scene
 opening_scene = {
     "title": "THE MUSEUM OF THINGS THAT NEVER HAPPENED",
@@ -118,10 +120,12 @@ def opening_Scene():
         print(str(index + 1) + ". " + choice)
 
     print("4. View inventory")
+    print("5. Save game")
+    print("6. Load game")
 
     # Validate the player's choice
     while True:
-        choice = input("Enter 1, 2, 3, or 4: ")
+        choice = input("Enter 1, 2, 3, 4, 5, or 6: ")
 
         if choice in ["1", "2", "3"]:
             break
@@ -134,9 +138,20 @@ def opening_Scene():
                 print(str(index + 1) + ". " + choice)
 
             print("4. View inventory")
+            print("5. Save game")
+            print("6. Load game")
+        elif choice == "5":
+            save_game(inventory, story_flags)
 
+        elif choice == "6":
+            game_data = load_game()
+
+            if game_data is not None:
+                inventory.clear()
+                inventory.extend(game_data["inventory"])
+                story_flags.update(game_data["story_flags"])
         else:
-            print("Invalid choice. Please enter 1, 2, 3, or 4.")
+            print("Invalid choice. Please enter 1, 2, 3, 4, 5, or 6.")
             audit_log("Invalid Input", "Failure")
 
     # Send the player to the selected story path
