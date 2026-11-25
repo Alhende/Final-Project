@@ -1,3 +1,4 @@
+from security.security import audit_log
 # Challenge 1: Missing Cities Puzzle
 def missing_cities_puzzle():
     print("\nMISSING CITIES PUZZLE")
@@ -8,9 +9,11 @@ def missing_cities_puzzle():
 
     if answer == "map" or answer == "a map":
         print("Correct! You unlocked the Missing City Map.")
+        audit_log("Missing Cities Puzzle", "Success")
         return True
     else:
         print("Incorrect. Return later to try again.")
+        audit_log("Missing Cities Puzzle", "Failure")
         return False
 
 
@@ -25,7 +28,9 @@ def broken_clocks_puzzle():
 
     if answer == "2:18" or answer == "2:18 am":
         print("Correct! You unlocked the Broken Clock Hand.")
+        audit_log("Broken Clocks Puzzle", "Success")
         return True
     else:
         print("Incorrect. Return later to try again.")
+        audit_log("Broken Clocks Puzzle", "Failure")
         return False
