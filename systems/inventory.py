@@ -49,7 +49,8 @@ def show_inventory():
     else:
         for index, item in enumerate(inventory):
             print(str(index + 1) + ". " + item)
-
+            print(item_descriptions[item])
+    print("Total items: " + str(len(inventory)))
     print("=" * 30)
 
 # Use an item from the inventory
