@@ -30,18 +30,17 @@ def ghost_writer_interaction():
     print("Ghost Writer: Some letters contain secrets that were never meant to be discovered.")
     print("1. Ask about the sealed letter")
     print("2. Ask about the Curator")
+    while True:
+        choice = input("Enter 1 or 2: ")
 
-    choice = input("Enter 1 or 2: ")
-
-    if choice == "1":
-        print("Ghost Writer: The letter contains a memory the Curator wants to hide.")
-        return "letter_clue"
-    elif choice == "2":
-        print("Ghost Writer: The Curator was once a visitor, just like you.")
-        return "curator_clue"
-    else:
-        print("Invalid choice.")
-        return None
+        if choice == "1":
+            print("Ghost Writer: The letter contains a memory the Curator wants to hide.")
+            return "letter_clue"
+        elif choice == "2":
+            print("Ghost Writer: The Curator was once a visitor, just like you.")
+            return "curator_clue"
+        else:
+            print("Invalid choice.")
 
 
 def map_keeper_interaction():
@@ -49,18 +48,18 @@ def map_keeper_interaction():
     print("Map Keeper: Every missing city has a secret.")
     print("1. Ask about the hidden city")
     print("2. Ask why the cities disappeared")
+    while True:
+        choice = input("Enter 1 or 2: ")
 
-    choice = input("Enter 1 or 2: ")
+        if choice == "1":
+            print("Map Keeper: Look beneath the oldest map to find the hidden entrance.")
+            return "hidden_city_clue"
+        elif choice == "2":
+            print("Map Keeper: The Curator erased the cities to hide their memories.")
+            return "missing_cities_clue"
+        else:
+            print("Invalid choice.")
 
-    if choice == "1":
-        print("Map Keeper: Look beneath the oldest map to find the hidden entrance.")
-        return "hidden_city_clue"
-    elif choice == "2":
-        print("Map Keeper: The Curator erased the cities to hide their memories.")
-        return "missing_cities_clue"
-    else:
-        print("Invalid choice.")
-        return None
 
 
 def clockmaker_interaction():
@@ -68,18 +67,17 @@ def clockmaker_interaction():
     print("Clockmaker: This museum is trapped at 2:17 AM.")
     print("1. Ask about the broken clock")
     print("2. Ask how to stop the clock")
+    while True:
+        choice = input("Enter 1 or 2: ")
+        if choice == "1":
+            print("Clockmaker: The clock stopped when the museum's first memory disappeared.")
+            return "clock_clue"
+        elif choice == "2":
+            print("Clockmaker: You need to recover the missing memories to change time.")
+            return "time_clue"
+        else:
+            print("Invalid choice.")
 
-    choice = input("Enter 1 or 2: ")
-
-    if choice == "1":
-        print("Clockmaker: The clock stopped when the museum's first memory disappeared.")
-        return "clock_clue"
-    elif choice == "2":
-        print("Clockmaker: You need to recover the missing memories to change time.")
-        return "time_clue"
-    else:
-        print("Invalid choice.")
-        return None
 
 
 def curator_interaction():
@@ -87,15 +85,14 @@ def curator_interaction():
     print("Curator: Welcome back. This museum has been waiting for you.")
     print("1. Ask why you are here")
     print("2. Ask about the museum")
+    while True:
+        choice = input("Enter 1 or 2: ")
 
-    choice = input("Enter 1 or 2: ")
-
-    if choice == "1":
-        print("Curator: You left something important behind.")
-        return "player_memory_clue"
-    elif choice == "2":
-        print("Curator: Every exhibit holds a memory that someone wanted to forget.")
-        return "museum_clue"
-    else:
-        print("Invalid choice.")
-        return None
+        if choice == "1":
+            print("Curator: You left something important behind.")
+            return "player_memory_clue"
+        elif choice == "2":
+            print("Curator: Every exhibit holds a memory that someone wanted to forget.")
+            return "museum_clue"
+        else:
+            print("Invalid choice.")
