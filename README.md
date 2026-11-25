@@ -20,9 +20,14 @@ to different endings.
 - Five locations or major events
 - Five NPC interactions
 - Five inventory items
+- Two interactive gameplay challenges
 - Story branching using dictionaries and lists
 - Input validation
-- Inventory system
+- Inventory management system
+- Timestamped audit logging
+- Save and load game progress
+- SHA-256 tamper detection
+- Error handling for missing or modified save files
 
 ## Story Paths
 1. Room of Unsent Letters: The player discovers a
@@ -87,16 +92,53 @@ python3 -m content.story
 5. Enter the numbers to explore rooms, interact with
    characters, collect items, and choose an ending.
 
-## Challenges
+## Gameplay Challenges
+
+### Challenge 1: Missing Cities Puzzle
+- Location: Hall of Missing Cities.
+- The Map Keeper asks the player to solve a riddle.
+- Success: The player receives the Missing City Map.
+- Failure: The player does not receive the map but can return and try again.
+
+### Challenge 2: Broken Clocks Puzzle
+- Location: Basement of Broken Clocks.
+- The Clockmaker asks the player to solve a time-based puzzle.
+- Success: The player receives the Broken Clock Hand.
+- Failure: The player does not receive the clock hand but can return and try again.
+
+## Development Challenges
+
 - Connecting the three story paths and NPC interactions.
 - Managing inventory items and their requirements.
 - Creating three different endings based on player choices.
 - Handling invalid user input.
 - Integrating Python files and resolving GitHub merge conflicts.
-- Testing all three endings to ensure they work correctly.
+- Implementing and testing the save and load system.
+- Testing all three endings and security features.
 
 ## Cyber Pack
-- Input validation: Invalid choices are handled safely,
-  and players are prompted to enter a valid choice.
-- Audit logging: Pending integration.
-- Save and load with tamper detection: Pending integration.
+
+### Input Validation
+Invalid menu choices are handled safely, and players are prompted to enter a valid choice.
+
+### Audit Logging
+The game records important events in audit_log.txt with timestamps, event names, and results.
+
+Recorded events include:
+- Game start and end.
+- Invalid user input.
+- Challenge success and failure.
+- Save and load success and failure.
+- Detection of modified save files.
+
+### Save and Load System
+Players can save and load their inventory and story progress using options 5 and 6 in the room selection menu.
+
+### Tamper Detection
+The game uses SHA-256 hashing to check the integrity of saved game data. The save data is stored in save_game.txt, and its hash is stored in save_hash.txt.
+
+If the saved data is modified without updating the original hash, the game displays a warning and rejects the modified save file.
+
+## Testing
+
+Sara and Ariana collaborated on developing and testing the game, including story paths, endings, NPC interactions, inventory management, gameplay challenges, and security features.
