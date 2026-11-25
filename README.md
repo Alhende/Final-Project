@@ -6,6 +6,14 @@ The player explores a mysterious museum, interacts with
 characters, collects items, and makes choices that lead
 to different endings.
 
+## Game Objectives
+- Explore the three museum exhibits.
+- Interact with NPCs to discover hidden secrets.
+- Collect inventory items to unlock different endings.
+- Make choices that affect the player's journey.
+- Discover the truth about the museum and choose
+  your final fate.
+
 ## Core Game Features
 - Three story paths
 - Three different endings
@@ -59,13 +67,36 @@ to different endings.
 - Memory Photograph: Required for the Destroy ending.
 
 ## Team Members
-To be completed.
+- Sara Alhende
+- Ariana Qasimzada
+
+Both team members collaborated on story development,
+Python programming, NPC interactions, inventory management,
+story branching, game testing, and project documentation.
 
 ## How to Run the Game
-To be confirmed after integration.
+1. Open the project folder in VS Code.
+2. Open the terminal.
+3. Run the following command:
+
+```bash
+python3 -m content.story
+```
+
+4. Follow the instructions displayed in the terminal.
+5. Enter the numbers to explore rooms, interact with
+   characters, collect items, and choose an ending.
 
 ## Challenges
-To be completed.
+- Connecting the three story paths and NPC interactions.
+- Managing inventory items and their requirements.
+- Creating three different endings based on player choices.
+- Handling invalid user input.
+- Integrating Python files and resolving GitHub merge conflicts.
+- Testing all three endings to ensure they work correctly.
 
 ## Cyber Pack
-To be completed.
+- Input validation: Invalid choices are handled safely,
+  and players are prompted to enter a valid choice.
+- Audit logging: Pending integration.
+- Save and load with tamper detection: Pending integration.
