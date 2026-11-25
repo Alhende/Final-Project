@@ -7,6 +7,8 @@ from content.npcs import forgotten_visitor_interaction
 from content.npcs import ghost_writer_interaction
 from content.npcs import curator_interaction
 from content.npcs import clockmaker_interaction
+from systems.challenges import missing_cities_puzzle, broken_clocks_puzzle
+from security.security import audit_log
 # Opening scene
 opening_scene = {
     "title": "THE MUSEUM OF THINGS THAT NEVER HAPPENED",
@@ -135,6 +137,7 @@ def opening_Scene():
 
         else:
             print("Invalid choice. Please enter 1, 2, 3, or 4.")
+            audit_log("Invalid Input", "Failure")
 
     # Send the player to the selected story path
     if choice == "1":
@@ -192,7 +195,7 @@ def opening_Scene():
         # Meet the Map Keeper
         city_result = map_keeper_interaction()
 
-        if city_result == "hidden_city_clue":
+        if city_result == "hidden_city_clue" and missing_cities_puzzle():
             add_item("Missing City Map")
             story_flags["has_clue"] = True
             story_flags["found_map"] = True
@@ -203,7 +206,7 @@ def opening_Scene():
         story_flags["visited_clocks"] = True
         clock_result = clockmaker_interaction()
 
-        if clock_result == "clock_clue":
+        if clock_result == "clock_clue" and broken_clocks_puzzle():
             add_item("Broken Clock Hand")
             story_flags["has_clue"] = True
             story_flags["found_clock_hand"] = True
@@ -256,6 +259,7 @@ def choose_ending():
             print("Invalid choice. Please enter 1, 2, 3, or 4.")
 # Run the story when this file is executed directly
 if __name__ == "__main__":
+    audit_log("Game Start", "Success")
     while True:
         opening_Scene()
 
@@ -269,10 +273,11 @@ if __name__ == "__main__":
                 add_item("Memory Photograph")
                 print("You received the Memory Photograph.")
                 story_flags["met_forgotten_visitor"] = True
-                
+
 
             elif visitor_result == "memory_clue":
                 print("\nYou should continue exploring the museum.")
         if story_flags["met_forgotten_visitor"]:
             if choose_ending():
+                audit_log("Game End", "Success")
                 break
